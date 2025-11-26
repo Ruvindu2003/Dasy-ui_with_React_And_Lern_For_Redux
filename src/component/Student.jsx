@@ -1,6 +1,23 @@
 import { EnvelopeIcon, AcademicCapIcon, CheckBadgeIcon, ClockIcon, PencilIcon, TrashIcon } from '@heroicons/react/24/outline'
+import { useDispatch } from 'react-redux'
+import { removeStudent } from '../UserReduser'
 
 const Student = ({ student }) => {
+    const dispatch = useDispatch()
+
+    // ✅ DISPATCH EXAMPLE 1: Delete a student
+    const handleDelete = () => {
+        if (window.confirm(`Are you sure you want to delete ${student.name}?`)) {
+            dispatch(removeStudent(student.id))
+        }
+    }
+
+    // ✅ DISPATCH EXAMPLE 2: Edit a student (placeholder for now)
+    const handleEdit = () => {
+        // You can navigate to an edit page or open a modal
+        alert(`Edit functionality for ${student.name} - Coming soon!`)
+        // Example: navigate(`/editStudent/${student.id}`)
+    }
     const getGradeColor = (grade) => {
         if (grade?.includes('A')) return 'from-green-500 to-emerald-600'
         if (grade?.includes('B')) return 'from-blue-500 to-indigo-600'
@@ -90,8 +107,8 @@ const Student = ({ student }) => {
 
                     {student.status && (
                         <div className={`p-3 rounded-xl border ${student.status === 'Active'
-                                ? 'bg-gradient-to-br from-green-50 to-emerald-50 border-green-100'
-                                : 'bg-gradient-to-br from-amber-50 to-orange-50 border-amber-100'
+                            ? 'bg-gradient-to-br from-green-50 to-emerald-50 border-green-100'
+                            : 'bg-gradient-to-br from-amber-50 to-orange-50 border-amber-100'
                             }`}>
                             <div className="flex items-center space-x-2 mb-1">
                                 {student.status === 'Active' ? (
@@ -114,11 +131,17 @@ const Student = ({ student }) => {
 
                 {/* Action Buttons */}
                 <div className="flex gap-2 pt-4 border-t border-gray-100">
-                    <button className="flex-1 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white py-2.5 px-4 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center space-x-2 shadow-md hover:shadow-lg transform hover:scale-105">
+                    <button
+                        onClick={handleEdit}
+                        className="flex-1 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white py-2.5 px-4 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center space-x-2 shadow-md hover:shadow-lg transform hover:scale-105"
+                    >
                         <PencilIcon className="h-4 w-4" />
                         <span>Edit</span>
                     </button>
-                    <button className="bg-red-50 hover:bg-red-100 text-red-600 py-2.5 px-4 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center border border-red-200 hover:border-red-300">
+                    <button
+                        onClick={handleDelete}
+                        className="bg-red-50 hover:bg-red-100 text-red-600 py-2.5 px-4 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center border border-red-200 hover:border-red-300"
+                    >
                         <TrashIcon className="h-4 w-4" />
                     </button>
                 </div>

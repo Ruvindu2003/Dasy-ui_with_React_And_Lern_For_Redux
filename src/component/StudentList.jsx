@@ -1,15 +1,23 @@
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import Student from "./Student"
 import { UserGroupIcon, MagnifyingGlassIcon, FunnelIcon, PlusIcon } from '@heroicons/react/24/outline'
 import { useState } from 'react'
 import { useNavigate } from "react-router-dom"
+import { addStudent } from "../UserReduser"
 
 const StudentList = () => {
+
+    const dispatch = useDispatch();
+
+
     const students = useSelector((state) => state.student)
     const [searchTerm, setSearchTerm] = useState('')
     const navigate = useNavigate();
 
     console.log('Students from Redux:', students);
+
+    dispatch(addStudent({ id: 1, name: 'John Doe', email: 'john@example.com', grade: 'A', status: 'Active' },
+    ))
 
     const filteredStudents = students?.filter(student =>
         student.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
