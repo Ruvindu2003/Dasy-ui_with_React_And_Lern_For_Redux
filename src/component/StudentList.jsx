@@ -2,13 +2,14 @@ import { useSelector } from "react-redux"
 import Student from "./Student"
 import { UserGroupIcon, MagnifyingGlassIcon, FunnelIcon, PlusIcon } from '@heroicons/react/24/outline'
 import { useState } from 'react'
-import { Outlet } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 const StudentList = () => {
     const students = useSelector((state) => state.student)
     const [searchTerm, setSearchTerm] = useState('')
+    const navigate = useNavigate();
 
-    console.log(students);
+    console.log('Students from Redux:', students);
 
     const filteredStudents = students?.filter(student =>
         student.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -35,12 +36,14 @@ const StudentList = () => {
                                 <p className="text-gray-500 mt-1">Manage and view all enrolled students</p>
                             </div>
                         </div>
-                        <button className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 flex items-center space-x-2 transform hover:scale-105">
+                        <button
+                            className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 flex items-center space-x-2 transform hover:scale-105"
+                            onClick={() => navigate('/addStudent')}
+                        >
                             <PlusIcon className="h-5 w-5" />
                             <span>Add Student</span>
                         </button>
                     </div>
-                    <Outlet />
                 </div>
             </div>
 

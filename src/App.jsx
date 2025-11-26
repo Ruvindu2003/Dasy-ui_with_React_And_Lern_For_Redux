@@ -1,8 +1,9 @@
 import { Route, Routes } from 'react-router-dom'
 import Contact from './component/Contact'
 import Home from './component/Home'
-import DashBoard from './component/DashBoard'
+import Dashboard from './component/Dashboard'
 import StudentList from './component/StudentList'
+import AddStudent from './component/AddStudent'
 
 
 function App() {
@@ -13,15 +14,13 @@ function App() {
 
       <Routes>
 
-
-        <Route path='/studentList' element={<StudentList />} >
-
-        </Route>
-        <Route path='/Home' element={<Home />} />
+        {/* Default root route */}
+        <Route path='/' element={<Home />} />
+        <Route path='/home' element={<Home />} />
         <Route path='/contact' element={<Contact />} />
-        <Route path='/dashboard' element={<DashBoard />} />
-
-
+        <Route path='/dashboard' element={<Dashboard />} />
+        <Route path='/studentList' element={<StudentList />} />
+        <Route path='/addStudent' element={<AddStudent />} />
 
       </Routes>
 
