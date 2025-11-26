@@ -1,15 +1,11 @@
-
-
 import { ChevronDownIcon } from '@heroicons/react/16/solid'
-import { use } from 'react'
 import { useNavigate } from 'react-router-dom'
+
 const Home = () => {
- const navigat=useNavigate();
+  const navigat = useNavigate();
 
-
-    return (        
-
-        <div className="isolate bg-gray-900 px-6 py-24 sm:py-32 lg:px-8">
+  return (
+    <div className="isolate bg-gray-900 px-6 py-24 sm:py-32 lg:px-8">
       <div
         aria-hidden="true"
         className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
@@ -157,17 +153,14 @@ const Home = () => {
           <button
             type="button"
             className="block w-full rounded-md bg-indigo-500 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-xs hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
-         onClick={()=> navigat('/contact')} >
+            onClick={() => navigat('/contact')}
+          >
             Let's talk
           </button>
         </div>
       </form>
     </div>
-
-    )
-
-
-
+  )
 }
 
 export default Home
