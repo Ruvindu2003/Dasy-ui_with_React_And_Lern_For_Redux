@@ -11,7 +11,6 @@ const User = ({ user }) => {
         if (window.confirm(`Are you sure you want to delete ${user.name}?`)) {
             try {
                 await dispatch(removeUserAsync(user.id)).unwrap()
-                // Optionally show success message
             } catch (error) {
                 alert('Failed to delete user: ' + (error.message || 'Unknown error'))
             }
@@ -49,10 +48,10 @@ const User = ({ user }) => {
                         </div>
                     </div>
 
-                    {/* Address */}
+                    {/* Address */}\r
                     <div className="flex items-start space-x-2 text-gray-600 mb-3">
                         <MapPinIcon className="h-5 w-5 mt-0.5 flex-shrink-0 text-indigo-500" />
-                        <p className="text-sm leading-relaxed">{user.address}</p>
+                        <p className="text-sm leading-relaxed">{user.adrees || user.address}</p>
                     </div>
 
                     {/* Age */}
