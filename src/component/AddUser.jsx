@@ -12,7 +12,7 @@ const AddUser = () => {
 
     const [formData, setFormData] = useState({
         name: '',
-        address: '',
+        adrees: '',
         age: '',
         gender: 'MALE'
     })
@@ -32,7 +32,7 @@ const AddUser = () => {
         if (id && currentUser && currentUser.id === parseInt(id)) {
             setFormData({
                 name: currentUser.name,
-                address: currentUser.address,
+                adrees: currentUser.adrees,
                 age: currentUser.age,
                 gender: currentUser.gender
             })
@@ -46,8 +46,8 @@ const AddUser = () => {
             newErrors.name = 'Name is required'
         }
 
-        if (!formData.address.trim()) {
-            newErrors.address = 'Address is required'
+        if (!formData.adrees.trim()) {
+            newErrors.adrees = 'Address is required'
         }
 
         if (!formData.age) {
@@ -171,21 +171,21 @@ const AddUser = () => {
 
                             {/* Address Field */}
                             <div>
-                                <label htmlFor="address" className="block text-sm font-semibold text-gray-700 mb-2">
+                                <label htmlFor="adrees" className="block text-sm font-semibold text-gray-700 mb-2">
                                     Address <span className="text-red-500">*</span>
                                 </label>
                                 <textarea
-                                    id="address"
-                                    name="address"
-                                    value={formData.address}
+                                    id="adrees"
+                                    name="adrees"
+                                    value={formData.adrees}
                                     onChange={handleChange}
                                     rows="3"
-                                    className={`w-full px-4 py-3 border ${errors.address ? 'border-red-500' : 'border-gray-200'} rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-300 bg-gray-50 hover:bg-white resize-none`}
+                                    className={`w-full px-4 py-3 border ${errors.adrees ? 'border-red-500' : 'border-gray-200'} rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-300 bg-gray-50 hover:bg-white resize-none`}
                                     placeholder="Enter full address"
                                 />
-                                {errors.address && (
+                                {errors.adrees && (
                                     <p className="mt-2 text-sm text-red-600 flex items-center">
-                                        <span className="mr-1">⚠</span> {errors.address}
+                                        <span className="mr-1">⚠</span> {errors.adrees}
                                     </p>
                                 )}
                             </div>
